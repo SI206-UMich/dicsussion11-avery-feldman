@@ -64,6 +64,17 @@ def add_pets_from_json(filename, cur, conn):
     json_data = json.loads(file_data)
 
     # THE REST IS UP TO YOU
+    pet_id = 1
+
+    for dictionary in json_data:
+        name = dictionary["name"]
+        age = dictionary["age"]
+        species = dictionary["species"]
+        cuteness = dictionary["cuteness"]
+        aggressiveness = dictionary["aggressiveness"]
+        cur.exectute("SELECT")
+        pet_id += 1
+        
     pass
 
 
