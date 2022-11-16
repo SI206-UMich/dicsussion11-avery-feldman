@@ -72,7 +72,10 @@ def add_pets_from_json(filename, cur, conn):
         species = dictionary["species"]
         cuteness = dictionary["cuteness"]
         aggressiveness = dictionary["aggressiveness"]
-        cur.exectute("SELECT")
+        cur.execute("SELECT id FROM Species WHERE title = ?", (species,))
+        species_id = cur.fetchone()[0]
+        cur.execute("INSERT INTO Patients (pet_id, name, species_id, age, cuteness, aggressiveness) VALUES (?,?,?,?,?,?)", (pet_id, name, species_id, age, cuteness, aggressiveness))
+        conn.commit()
         pet_id += 1
         
     pass
